@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="EN">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="description" content="TEA PLUS">
+<meta name="viewport" content="width=1020, initial-scale=1">
+
+<title>TEA PLUS</title>
+
+<link rel="stylesheet" href="./js/fancybox/source/jquery.fancybox.css?v=2.1.5" type="text/css" media="screen" />
+
+<link rel="stylesheet" href="css/base.css">
+
+<!--[if IE]>
+<script src="js/html5.js"></script>
+<![endif]-->
+
+
+</head>
+
+<body>
+
+
+<!-- Content -->
+<div class="main-content  tvc-page">
+
+    <div class="content-center">
+
+        <!-- Header -->
+        <header class="main-header  clear">
+    <div class="content-center">
+        <h1 class="main-logo">
+            <a href="index.html">
+                <img src="images/logo.png" alt="logo"/>
+                <span>Tea plus</span>
+            </a>
+        </h1>
+        <nav class="main-nav">
+
+            <div id="mainMenu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="secret-of-tea.html">TEA+ Healthy  Secrets</a></li>
+                    <li><a href="what-is.html">What is  TEA+</a></li>
+                    <li><a href="suntory.html">SUNTORY</a></li>
+                    <li><a href="tvc.html">TVC</a></li>
+
+                </ul>
+            </div>
+        </nav>
+    </div>
+</header>
+
+
+        <div id="fadeContent" style="opacity: 0;">
+            <article class="tvc-content  clear">
+                <div class="clear  elem-animate" data-rate="1">
+                    <h1>
+                        TVC
+                    </h1>
+
+                    <div class="wrp">
+                        <p>
+                            <span>
+                                本 <br/>
+                                質 <br/>
+                                を <br/>
+                                知 <br/>
+                                る <br/>
+                                。
+                            </span>
+                            <span>
+                                削<br/>
+                                ぐ<br/>
+                                こ<br/>
+                                と<br/>
+                                で<br/>
+                                、
+                            </span>
+                        </p>
+                        <p>
+                            ลดทอน เพื่อเข้าถึงแก่นแท้
+                        </p>
+                    </div>
+                </div>
+                <ul class="menu-tvc  elem-animate" data-rate="3">
+                    <li class="after-hr">
+                        <a class="js-change-page" href="tvc.html">
+                            <img src="images/tvc-1.png" alt=""/>
+                            <span>
+                                Sushi
+                            </span>
+                        </a>
+                    </li>
+                    <li class="after-hr">
+                        <a class="js-change-page" href="tvc-2.html">
+                            <img src="images/tvc-2.png" alt=""/>
+                            <span>
+                                Make-up
+                            </span>
+                        </a>
+                    </li>
+                    <li class="after-hr  active">
+                        <a class="js-change-page" href="javascript: void(0);">
+                            <img src="images/tvc-3.png" alt=""/>
+                            <span class="special">
+                                Special Edition Bonsai
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+                <div class="thumb  elem-animate" data-rate="2">
+                    <img src="images/_temp/yt.png" alt=""/>
+                </div>
+            </article>
+        </div>
+    </div>
+
+</div>
+
+
+<!-- Footer -->
+<div class="content-center">
+    <footer class="main-footer">
+
+        <p>© COPYRIGHT 2015</p>
+        <a id="goTop" href="#" class="go-top">TOP</a>
+    </footer>
+
+</div>
+
+
+
+<!-- jQuery library (served from Google) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="./js/velocity.min.js"></script>
+
+
+<script type="text/javascript" src="./js/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+<script type="text/javascript" src="./js/fancybox/source/helpers/jquery.fancybox-media.js?v=1.0.6"></script>
+
+
+<script>
+    $(document).ready(function () {
+
+        $('#goTop').on('click', function(){
+            $('body').animate({scrollTop:0}, 'slow');
+        });
+
+        $('.fancybox-media').fancybox({
+            padding: 0,
+            maxWidth	: 800,
+            maxHeight	: 600,
+            openEffect : 'none',
+            closeEffect : 'none',
+            prevEffect : 'none',
+            nextEffect : 'none',
+
+            arrows : false,
+            helpers : {
+                media : {},
+                buttons : {}
+            }
+        });
+
+        $('.fancybox').fancybox({
+            padding: 0,
+        });
+
+
+        /* menu */
+
+
+
+
+
+		$('#mainMenu').on('click','a',function(event){
+			event.preventDefault();
+			var thisUrl = $(this).attr('href');
+
+			hideMenu();
+			changeAnimatePage(thisUrl);
+
+
+		});
+
+
+        $('.js-change-page').on('click',function(event){
+            event.preventDefault();
+            event.stopPropagation();
+            var thisUrl = $(this).attr('href');
+            changeAnimatePage(thisUrl);
+
+
+        });
+
+        if($('.home-img-1').length){
+            setTimeout(function(){
+                $('.home-img-1').css({opacity: 0});
+                $('.home-img-2').css({opacity: 0});
+            }, 5000)
+
+            slideHome();
+        }
+
+        function slideHome(){
+            var home1 = $('.home-img-1');
+            var home2 = $('.home-img-3');
+            var home3 = $('.home-img-2');
+            var home4 = $('.home-img-4');
+            var myDuratoin = 1000;
+            var myDuratoin2 = 1500;
+
+            setInterval(function(){
+                var thisTran = home1.css('opacity');
+
+                if(thisTran == 0){
+                    slideHome2();
+                }else{
+                    slideHome1();
+                }
+            }, 6000);
+
+            function slideHome1(){
+                home1.velocity({opacity: 0}, {duration: myDuratoin});
+                home2.velocity({opacity: 1}, {duration: myDuratoin, delay: myDuratoin2});
+                home3.velocity({opacity: 0}, {duration: myDuratoin});
+                home4.velocity({opacity: 1}, {duration: myDuratoin, delay: myDuratoin2});
+            }
+
+            function slideHome2(){
+                home1.velocity({opacity: 1}, {duration: myDuratoin, delay: myDuratoin2});
+                home2.velocity({opacity: 0}, {duration: myDuratoin});
+                home3.velocity({opacity: 1}, {duration: myDuratoin, delay: myDuratoin2});
+                home4.velocity({opacity: 0}, {duration: myDuratoin});
+            }
+        }
+
+        function showMenu(){
+
+            var mainMenu = $('#mainMenu');
+            var menuDelay = 200;
+
+            mainMenu.css({display: 'block'}).velocity({opacity: 1},{duration: 200});
+
+            mainMenu.find('li').each(function(index){
+                $(this).velocity({top: '0', opacity: 1},{duration: 400, delay: menuDelay * index});
+            });
+        }
+
+        function hideMenu(){
+
+            var mainMenu = $('#mainMenu');
+            var menuDelay = 200;
+
+            mainMenu.find('li').each(function(index){
+                $(this).velocity({top: '-20px', opacity: 0},{duration: 400, delay: menuDelay * index, complete: function() {
+                    $(this).css({top: '20px'});
+                }});
+            });
+
+            mainMenu.velocity({opacity: 0},{duration: 200, delay: 1200, complete: function() {
+                mainMenu.css({display: 'none'});
+            }});
+
+        }
+
+
+        /* animate page */
+        setAnimatePage();
+
+        function setAnimatePage(){
+
+            var elemAnimate = $('.elem-animate');
+
+            elemAnimate.each(function(){
+
+                $(this).css({opacity: 0});
+                var elemPosition = $(this).css('position');
+                var elemTop = $(this).css('top');
+
+                if(elemPosition == 'static') {
+                    $(this).css({position: 'relative', top: '20px'});
+                }else{
+
+                    if(elemTop == 'auto'){
+                        elemTop = 0;
+                    }
+
+                    var elemTop2 = parseInt(elemTop) + 20;
+
+                    $(this).css({top: elemTop2});
+                }
+
+            });
+
+            $(window).load(function () {
+                startAnimatePage();
+
+            });
+
+        }
+
+        function startAnimatePage(){
+
+            $('#fadeContent').css({opacity: 1});
+
+            var elemAnimateStart = $('.elem-animate');
+
+            elemAnimateStart.each(function(index){
+
+                var elemTopStart = $(this).css('top');
+                var elemTopStart2 = parseInt(elemTopStart) - 20;
+                var elemDelayStart = $(this).data('rate') * 200;
+
+                $(this).velocity({opacity: 1, top: elemTopStart2 }, {duration: 400, delay: elemDelayStart});
+
+            });
+        }
+
+        function changeAnimatePage(thisUrl){
+
+            var elemAnimateCh = $('.elem-animate');
+            var len = elemAnimateCh.length;
+            var nextTo = thisUrl;
+
+
+            elemAnimateCh.each(function(index){
+
+                var elemTopCh = $(this).css('top');
+                var elemTopCh2 = parseInt(elemTopCh) - 20;
+                var elemDelayCh = $(this).data('rate') * 400;
+
+                $(this).velocity({opacity: 0, top: elemTopCh2 }, {duration: 400, delay: elemDelayCh});
+
+                if (index == len - 1) {
+                    setTimeout(function(){
+                        window.location.href = nextTo;
+                    }, elemDelayCh + 400);
+                }
+            });
+        }
+
+
+
+
+    });
+</script>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+
+    });
+</script>
+
+
+</body>
+</html>
